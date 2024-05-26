@@ -37,11 +37,13 @@
 #  --no-conditional-dependencies \
 #  --no-libtool \
 #  --macro-prefix=gl \
+#  fprintftime \
 #  parse-datetime
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])
 gl_MODULES([
+  fprintftime
   parse-datetime
 ])
 gl_AVOID([])

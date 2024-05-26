@@ -33,14 +33,71 @@
    declaration of the second argument to gettimeofday. */
 #undef GETTIMEOFDAY_TIMEZONE
 
+/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
+   whether the gnulib module fscanf shall be considered present. */
+#undef GNULIB_FSCANF
+
+/* Define to 1 if printf and friends should be labeled with attribute
+   "__gnu_printf__" instead of "__printf__" */
+#undef GNULIB_PRINTF_ATTRIBUTE_FLAVOR_GNU
+
+/* Define to a C preprocessor expression that evaluates to 1 or 0, depending
+   whether the gnulib module scanf shall be considered present. */
+#undef GNULIB_SCANF
+
 /* Define to 1 when the gnulib module environ should be tested. */
 #undef GNULIB_TEST_ENVIRON
+
+/* Define to 1 when the gnulib module fgetc should be tested. */
+#undef GNULIB_TEST_FGETC
+
+/* Define to 1 when the gnulib module fgets should be tested. */
+#undef GNULIB_TEST_FGETS
+
+/* Define to 1 when the gnulib module fprintf should be tested. */
+#undef GNULIB_TEST_FPRINTF
+
+/* Define to 1 when the gnulib module fputc should be tested. */
+#undef GNULIB_TEST_FPUTC
+
+/* Define to 1 when the gnulib module fputs should be tested. */
+#undef GNULIB_TEST_FPUTS
+
+/* Define to 1 when the gnulib module fread should be tested. */
+#undef GNULIB_TEST_FREAD
+
+/* Define to 1 when the gnulib module fscanf should be tested. */
+#undef GNULIB_TEST_FSCANF
+
+/* Define to 1 when the gnulib module fwrite should be tested. */
+#undef GNULIB_TEST_FWRITE
+
+/* Define to 1 when the gnulib module getc should be tested. */
+#undef GNULIB_TEST_GETC
+
+/* Define to 1 when the gnulib module getchar should be tested. */
+#undef GNULIB_TEST_GETCHAR
 
 /* Define to 1 when the gnulib module gettimeofday should be tested. */
 #undef GNULIB_TEST_GETTIMEOFDAY
 
 /* Define to 1 when the gnulib module mktime should be tested. */
 #undef GNULIB_TEST_MKTIME
+
+/* Define to 1 when the gnulib module printf should be tested. */
+#undef GNULIB_TEST_PRINTF
+
+/* Define to 1 when the gnulib module putc should be tested. */
+#undef GNULIB_TEST_PUTC
+
+/* Define to 1 when the gnulib module putchar should be tested. */
+#undef GNULIB_TEST_PUTCHAR
+
+/* Define to 1 when the gnulib module puts should be tested. */
+#undef GNULIB_TEST_PUTS
+
+/* Define to 1 when the gnulib module scanf should be tested. */
+#undef GNULIB_TEST_SCANF
 
 /* Define to 1 when the gnulib module setenv should be tested. */
 #undef GNULIB_TEST_SETENV
@@ -59,6 +116,12 @@
 
 /* Define to 1 when the gnulib module unsetenv should be tested. */
 #undef GNULIB_TEST_UNSETENV
+
+/* Define to 1 when the gnulib module vfprintf should be tested. */
+#undef GNULIB_TEST_VFPRINTF
+
+/* Define to 1 when the gnulib module vprintf should be tested. */
+#undef GNULIB_TEST_VPRINTF
 
 /* Define if the __locale_t type contains the name of the LC_MESSAGES
    category. */
@@ -104,6 +167,10 @@
    don't. */
 #undef HAVE_DECL_EXECVPE
 
+/* Define to 1 if you have the declaration of 'fcloseall', and to 0 if you
+   don't. */
+#undef HAVE_DECL_FCLOSEALL
+
 /* Define to 1 if you have the declaration of 'fcvt', and to 0 if you don't.
    */
 #undef HAVE_DECL_FCVT
@@ -112,9 +179,17 @@
    */
 #undef HAVE_DECL_GCVT
 
+/* Define to 1 if you have the declaration of 'getw', and to 0 if you don't.
+   */
+#undef HAVE_DECL_GETW
+
 /* Define to 1 if you have the declaration of 'localtime_r', and to 0 if you
    don't. */
 #undef HAVE_DECL_LOCALTIME_R
+
+/* Define to 1 if you have the declaration of 'putw', and to 0 if you don't.
+   */
+#undef HAVE_DECL_PUTW
 
 /* Define to 1 if you have the declaration of 'setenv', and to 0 if you don't.
    */
@@ -405,6 +480,15 @@
 
 /* If malloc(0) is != NULL, define this to 1. Otherwise define this to 0. */
 #undef MALLOC_0_IS_NONNULL
+
+/* Use GNU style printf and scanf.  */
+#ifndef __USE_MINGW_ANSI_STDIO
+# undef __USE_MINGW_ANSI_STDIO
+#endif
+
+
+/* Define to 1 on musl libc. */
+#undef MUSL_LIBC
 
 /* Define if the compilation of mktime.c should define 'mktime_internal'. */
 #undef NEED_MKTIME_INTERNAL

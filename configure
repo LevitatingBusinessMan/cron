@@ -689,6 +689,124 @@ LC_COLLATE_IMPLEMENTED
 LOCALE_FR_UTF8
 NEXT_AS_FIRST_DIRECTIVE_STDLIB_H
 NEXT_STDLIB_H
+GL_COND_OBJ_STDIO_WRITE_FALSE
+GL_COND_OBJ_STDIO_WRITE_TRUE
+GL_COND_OBJ_STDIO_READ_FALSE
+GL_COND_OBJ_STDIO_READ_TRUE
+GL_GNULIB_MDA_TEMPNAM
+GL_GNULIB_MDA_PUTW
+GL_GNULIB_MDA_GETW
+GL_GNULIB_MDA_FILENO
+GL_GNULIB_MDA_FDOPEN
+GL_GNULIB_MDA_FCLOSEALL
+GL_GNULIB_VSPRINTF_POSIX
+GL_GNULIB_VSNPRINTF
+GL_GNULIB_VPRINTF_POSIX
+GL_GNULIB_VPRINTF
+GL_GNULIB_VFPRINTF_POSIX
+GL_GNULIB_VFPRINTF
+GL_GNULIB_VDPRINTF
+GL_GNULIB_VSCANF
+GL_GNULIB_VFSCANF
+GL_GNULIB_VASPRINTF
+GL_GNULIB_TMPFILE
+GL_GNULIB_STDIO_H_SIGPIPE
+GL_GNULIB_STDIO_H_NONBLOCKING
+GL_GNULIB_SPRINTF_POSIX
+GL_GNULIB_SNPRINTF
+GL_GNULIB_SCANF
+GL_GNULIB_RENAMEAT
+GL_GNULIB_RENAME
+GL_GNULIB_REMOVE
+GL_GNULIB_PUTS
+GL_GNULIB_PUTCHAR
+GL_GNULIB_PUTC
+GL_GNULIB_PRINTF_POSIX
+GL_GNULIB_PRINTF
+GL_GNULIB_POPEN
+GL_GNULIB_PERROR
+GL_GNULIB_PCLOSE
+GL_GNULIB_OBSTACK_PRINTF_POSIX
+GL_GNULIB_OBSTACK_PRINTF
+GL_GNULIB_GETLINE
+GL_GNULIB_GETDELIM
+GL_GNULIB_GETCHAR
+GL_GNULIB_GETC
+GL_GNULIB_FWRITE
+GL_GNULIB_FTELLO
+GL_GNULIB_FTELL
+GL_GNULIB_FSEEKO
+GL_GNULIB_FSEEK
+GL_GNULIB_FSCANF
+GL_GNULIB_FREOPEN
+GL_GNULIB_FREAD
+GL_GNULIB_FPUTS
+GL_GNULIB_FPUTC
+GL_GNULIB_FPURGE
+GL_GNULIB_FPRINTF_POSIX
+GL_GNULIB_FPRINTF
+GL_GNULIB_FOPEN_GNU
+GL_GNULIB_FOPEN
+GL_GNULIB_FGETS
+GL_GNULIB_FGETC
+GL_GNULIB_FFLUSH
+GL_GNULIB_FDOPEN
+GL_GNULIB_FCLOSE
+GL_GNULIB_DPRINTF
+NEXT_AS_FIRST_DIRECTIVE_STDIO_H
+NEXT_STDIO_H
+REPLACE_VSPRINTF
+REPLACE_VSNPRINTF
+REPLACE_VPRINTF
+REPLACE_VFPRINTF
+REPLACE_VDPRINTF
+REPLACE_VASPRINTF
+REPLACE_TMPFILE
+REPLACE_STDIO_WRITE_FUNCS
+REPLACE_STDIO_READ_FUNCS
+REPLACE_SPRINTF
+REPLACE_SNPRINTF
+REPLACE_RENAMEAT
+REPLACE_RENAME
+REPLACE_REMOVE
+REPLACE_PRINTF
+REPLACE_POPEN
+REPLACE_PERROR
+REPLACE_OBSTACK_PRINTF
+REPLACE_GETLINE
+REPLACE_GETDELIM
+REPLACE_FTELLO
+REPLACE_FTELL
+REPLACE_FSEEKO
+REPLACE_FSEEK
+REPLACE_FREOPEN
+REPLACE_FPURGE
+REPLACE_FPRINTF
+REPLACE_FOPEN_FOR_FOPEN_GNU
+REPLACE_FOPEN
+REPLACE_FFLUSH
+REPLACE_FDOPEN
+REPLACE_FCLOSE
+REPLACE_DPRINTF
+HAVE_VDPRINTF
+HAVE_VASPRINTF
+HAVE_RENAMEAT
+HAVE_POPEN
+HAVE_PCLOSE
+HAVE_FTELLO
+HAVE_FSEEKO
+HAVE_DPRINTF
+HAVE_DECL_VSNPRINTF
+HAVE_DECL_SNPRINTF
+HAVE_DECL_PUTW
+HAVE_DECL_OBSTACK_PRINTF
+HAVE_DECL_GETW
+HAVE_DECL_GETLINE
+HAVE_DECL_GETDELIM
+HAVE_DECL_FTELLO
+HAVE_DECL_FSEEKO
+HAVE_DECL_FPURGE
+HAVE_DECL_FCLOSEALL
 GL_GENERATE_STDINT_H_FALSE
 GL_GENERATE_STDINT_H_TRUE
 STDINT_H
@@ -6301,6 +6419,7 @@ fi
   # Code from module extensions:
   # Code from module extern-inline:
   # Code from module flexmember:
+  # Code from module fprintftime:
   # Code from module gen-header:
   # Code from module gettext-h:
   # Code from module gettime:
@@ -6332,6 +6451,12 @@ fi
   # Code from module stdckdint:
   # Code from module stddef:
   # Code from module stdint:
+  # Code from module stdio:
+
+
+  printf "%s\n" "#define __USE_MINGW_ANSI_STDIO 1" >>confdefs.h
+
+
   # Code from module stdlib:
   # Code from module sys_time:
   # Code from module sys_types:
@@ -11619,6 +11744,492 @@ printf "%s\n" "#define HAVE_TSEARCH 1" >>confdefs.h
 
 
 
+    HAVE_DECL_FCLOSEALL=1;
+  HAVE_DECL_FPURGE=1;
+  HAVE_DECL_FSEEKO=1;
+  HAVE_DECL_FTELLO=1;
+  HAVE_DECL_GETDELIM=1;
+  HAVE_DECL_GETLINE=1;
+  HAVE_DECL_GETW=1;
+  HAVE_DECL_OBSTACK_PRINTF=1;
+  HAVE_DECL_PUTW=1;
+  HAVE_DECL_SNPRINTF=1;
+  HAVE_DECL_VSNPRINTF=1;
+  HAVE_DPRINTF=1;
+  HAVE_FSEEKO=1;
+  HAVE_FTELLO=1;
+  HAVE_PCLOSE=1;
+  HAVE_POPEN=1;
+  HAVE_RENAMEAT=1;
+  HAVE_VASPRINTF=1;
+  HAVE_VDPRINTF=1;
+  REPLACE_DPRINTF=0;
+  REPLACE_FCLOSE=0;
+  REPLACE_FDOPEN=0;
+  REPLACE_FFLUSH=0;
+  REPLACE_FOPEN=0;
+  REPLACE_FOPEN_FOR_FOPEN_GNU=0;
+  REPLACE_FPRINTF=0;
+  REPLACE_FPURGE=0;
+  REPLACE_FREOPEN=0;
+  REPLACE_FSEEK=0;
+  REPLACE_FSEEKO=0;
+  REPLACE_FTELL=0;
+  REPLACE_FTELLO=0;
+  REPLACE_GETDELIM=0;
+  REPLACE_GETLINE=0;
+  REPLACE_OBSTACK_PRINTF=0;
+  REPLACE_PERROR=0;
+  REPLACE_POPEN=0;
+  REPLACE_PRINTF=0;
+  REPLACE_REMOVE=0;
+  REPLACE_RENAME=0;
+  REPLACE_RENAMEAT=0;
+  REPLACE_SNPRINTF=0;
+  REPLACE_SPRINTF=0;
+  REPLACE_STDIO_READ_FUNCS=0;
+  REPLACE_STDIO_WRITE_FUNCS=0;
+  REPLACE_TMPFILE=0;
+  REPLACE_VASPRINTF=0;
+  REPLACE_VDPRINTF=0;
+  REPLACE_VFPRINTF=0;
+  REPLACE_VPRINTF=0;
+  REPLACE_VSNPRINTF=0;
+  REPLACE_VSPRINTF=0;
+
+
+
+  case "$host_os" in
+    *-musl* | midipix*)
+
+printf "%s\n" "#define MUSL_LIBC 1" >>confdefs.h
+
+      ;;
+  esac
+
+ac_fn_check_decl "$LINENO" "fcloseall" "ac_cv_have_decl_fcloseall" "$ac_includes_default" "$ac_c_undeclared_builtin_options" "CFLAGS"
+if test "x$ac_cv_have_decl_fcloseall" = xyes
+then :
+  ac_have_decl=1
+else case e in #(
+  e) ac_have_decl=0 ;;
+esac
+fi
+printf "%s\n" "#define HAVE_DECL_FCLOSEALL $ac_have_decl" >>confdefs.h
+
+ac_fn_check_decl "$LINENO" "getw" "ac_cv_have_decl_getw" "$ac_includes_default" "$ac_c_undeclared_builtin_options" "CFLAGS"
+if test "x$ac_cv_have_decl_getw" = xyes
+then :
+  ac_have_decl=1
+else case e in #(
+  e) ac_have_decl=0 ;;
+esac
+fi
+printf "%s\n" "#define HAVE_DECL_GETW $ac_have_decl" >>confdefs.h
+
+ac_fn_check_decl "$LINENO" "putw" "ac_cv_have_decl_putw" "$ac_includes_default" "$ac_c_undeclared_builtin_options" "CFLAGS"
+if test "x$ac_cv_have_decl_putw" = xyes
+then :
+  ac_have_decl=1
+else case e in #(
+  e) ac_have_decl=0 ;;
+esac
+fi
+printf "%s\n" "#define HAVE_DECL_PUTW $ac_have_decl" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+     if test $gl_cv_have_include_next = yes; then
+       gl_cv_next_stdio_h='<'stdio.h'>'
+     else
+       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking absolute name of <stdio.h>" >&5
+printf %s "checking absolute name of <stdio.h>... " >&6; }
+if test ${gl_cv_next_stdio_h+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e)
+
+
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <stdio.h>
+_ACEOF
+                case "$host_os" in
+    aix*) gl_absname_cpp="$ac_cpp -C" ;;
+    *)    gl_absname_cpp="$ac_cpp" ;;
+  esac
+
+  case "$host_os" in
+    mingw* | windows*)
+                                          gl_dirsep_regex='[/\\]'
+      ;;
+    *)
+      gl_dirsep_regex='\/'
+      ;;
+  esac
+      gl_make_literal_regex_sed='s,[]$^\\.*/[],\\&,g'
+  gl_header_literal_regex=`echo 'stdio.h' \
+                           | sed -e "$gl_make_literal_regex_sed"`
+  gl_absolute_header_sed="/${gl_dirsep_regex}${gl_header_literal_regex}/"'{
+      s/.*"\(.*'"${gl_dirsep_regex}${gl_header_literal_regex}"'\)".*/\1/
+      s|^/[^/]|//&|
+      p
+      q
+    }'
+
+        gl_cv_absolute_stdio_h=`(eval "$gl_absname_cpp conftest.$ac_ext") 2>&5 |
+  sed -n "$gl_absolute_header_sed"`
+
+          gl_header=$gl_cv_absolute_stdio_h
+          gl_cv_next_stdio_h='"'$gl_header'"'
+
+          ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $gl_cv_next_stdio_h" >&5
+printf "%s\n" "$gl_cv_next_stdio_h" >&6; }
+     fi
+     NEXT_STDIO_H=$gl_cv_next_stdio_h
+
+     if test $gl_cv_have_include_next = yes || test $gl_cv_have_include_next = buggy; then
+       # INCLUDE_NEXT_AS_FIRST_DIRECTIVE='include_next'
+       gl_next_as_first_directive='<'stdio.h'>'
+     else
+       # INCLUDE_NEXT_AS_FIRST_DIRECTIVE='include'
+       gl_next_as_first_directive=$gl_cv_next_stdio_h
+     fi
+     NEXT_AS_FIRST_DIRECTIVE_STDIO_H=$gl_next_as_first_directive
+
+
+
+
+
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking which flavor of printf attribute matches inttypes macros" >&5
+printf %s "checking which flavor of printf attribute matches inttypes macros... " >&6; }
+if test ${gl_cv_func_printf_attribute_flavor+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+       #define __STDC_FORMAT_MACROS 1
+       #include <stdio.h>
+       #include <inttypes.h>
+       /* For non-mingw systems, compilation will trivially succeed.
+          For mingw, compilation will succeed for older mingw (system
+          printf, "I64d") and fail for newer mingw (gnu printf, "lld"). */
+       #if (defined _WIN32 && ! defined __CYGWIN__) && \
+         (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 4))
+       extern char PRIdMAX_probe[sizeof PRIdMAX == sizeof "I64d" ? 1 : -1];
+       #endif
+
+int
+main (void)
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  gl_cv_func_printf_attribute_flavor=system
+else case e in #(
+  e) gl_cv_func_printf_attribute_flavor=gnu ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $gl_cv_func_printf_attribute_flavor" >&5
+printf "%s\n" "$gl_cv_func_printf_attribute_flavor" >&6; }
+  if test "$gl_cv_func_printf_attribute_flavor" = gnu; then
+
+printf "%s\n" "#define GNULIB_PRINTF_ATTRIBUTE_FLAVOR_GNU 1" >>confdefs.h
+
+  fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  if test $ac_cv_have_decl_fcloseall = no; then
+    HAVE_DECL_FCLOSEALL=0
+  fi
+
+
+  if test $ac_cv_have_decl_getw = no; then
+    HAVE_DECL_GETW=0
+  fi
+
+
+  if test $ac_cv_have_decl_putw = no; then
+    HAVE_DECL_PUTW=0
+  fi
+
+
+
+  GL_GNULIB_DPRINTF=0
+
+
+
+  GL_GNULIB_FCLOSE=0
+
+
+
+  GL_GNULIB_FDOPEN=0
+
+
+
+  GL_GNULIB_FFLUSH=0
+
+
+
+  GL_GNULIB_FGETC=0
+
+
+
+  GL_GNULIB_FGETS=0
+
+
+
+  GL_GNULIB_FOPEN=0
+
+
+
+  GL_GNULIB_FOPEN_GNU=0
+
+
+
+  GL_GNULIB_FPRINTF=0
+
+
+
+  GL_GNULIB_FPRINTF_POSIX=0
+
+
+
+  GL_GNULIB_FPURGE=0
+
+
+
+  GL_GNULIB_FPUTC=0
+
+
+
+  GL_GNULIB_FPUTS=0
+
+
+
+  GL_GNULIB_FREAD=0
+
+
+
+  GL_GNULIB_FREOPEN=0
+
+
+
+  GL_GNULIB_FSCANF=0
+
+
+
+  GL_GNULIB_FSEEK=0
+
+
+
+  GL_GNULIB_FSEEKO=0
+
+
+
+  GL_GNULIB_FTELL=0
+
+
+
+  GL_GNULIB_FTELLO=0
+
+
+
+  GL_GNULIB_FWRITE=0
+
+
+
+  GL_GNULIB_GETC=0
+
+
+
+  GL_GNULIB_GETCHAR=0
+
+
+
+  GL_GNULIB_GETDELIM=0
+
+
+
+  GL_GNULIB_GETLINE=0
+
+
+
+  GL_GNULIB_OBSTACK_PRINTF=0
+
+
+
+  GL_GNULIB_OBSTACK_PRINTF_POSIX=0
+
+
+
+  GL_GNULIB_PCLOSE=0
+
+
+
+  GL_GNULIB_PERROR=0
+
+
+
+  GL_GNULIB_POPEN=0
+
+
+
+  GL_GNULIB_PRINTF=0
+
+
+
+  GL_GNULIB_PRINTF_POSIX=0
+
+
+
+  GL_GNULIB_PUTC=0
+
+
+
+  GL_GNULIB_PUTCHAR=0
+
+
+
+  GL_GNULIB_PUTS=0
+
+
+
+  GL_GNULIB_REMOVE=0
+
+
+
+  GL_GNULIB_RENAME=0
+
+
+
+  GL_GNULIB_RENAMEAT=0
+
+
+
+  GL_GNULIB_SCANF=0
+
+
+
+  GL_GNULIB_SNPRINTF=0
+
+
+
+  GL_GNULIB_SPRINTF_POSIX=0
+
+
+
+  GL_GNULIB_STDIO_H_NONBLOCKING=0
+
+
+
+  GL_GNULIB_STDIO_H_SIGPIPE=0
+
+
+
+  GL_GNULIB_TMPFILE=0
+
+
+
+  GL_GNULIB_VASPRINTF=0
+
+
+
+  GL_GNULIB_VFSCANF=0
+
+
+
+  GL_GNULIB_VSCANF=0
+
+
+
+  GL_GNULIB_VDPRINTF=0
+
+
+
+  GL_GNULIB_VFPRINTF=0
+
+
+
+  GL_GNULIB_VFPRINTF_POSIX=0
+
+
+
+  GL_GNULIB_VPRINTF=0
+
+
+
+  GL_GNULIB_VPRINTF_POSIX=0
+
+
+
+  GL_GNULIB_VSNPRINTF=0
+
+
+
+  GL_GNULIB_VSPRINTF_POSIX=0
+
+
+
+  GL_GNULIB_MDA_FCLOSEALL=1
+
+
+
+  GL_GNULIB_MDA_FDOPEN=1
+
+
+
+  GL_GNULIB_MDA_FILENO=1
+
+
+
+  GL_GNULIB_MDA_GETW=1
+
+
+
+  GL_GNULIB_MDA_PUTW=1
+
+
+
+  GL_GNULIB_MDA_TEMPNAM=1
+
+
+
+
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for nl_langinfo and CODESET" >&5
 printf %s "checking for nl_langinfo and CODESET... " >&6; }
 if test ${am_cv_langinfo_codeset+y}
@@ -14061,6 +14672,374 @@ fi
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+     if test $REPLACE_STDIO_READ_FUNCS = 1; then
+  GL_COND_OBJ_STDIO_READ_TRUE=
+  GL_COND_OBJ_STDIO_READ_FALSE='#'
+else
+  GL_COND_OBJ_STDIO_READ_TRUE='#'
+  GL_COND_OBJ_STDIO_READ_FALSE=
+fi
+:
+    if test -z "${GL_COND_OBJ_STDIO_READ_TRUE}" && test -z "${GL_COND_OBJ_STDIO_READ_FALSE}"; then
+    GL_COND_OBJ_STDIO_READ_TRUE='#'
+    GL_COND_OBJ_STDIO_READ_FALSE='#'
+  fi
+
+
+     if test $REPLACE_STDIO_WRITE_FUNCS = 1; then
+  GL_COND_OBJ_STDIO_WRITE_TRUE=
+  GL_COND_OBJ_STDIO_WRITE_FALSE='#'
+else
+  GL_COND_OBJ_STDIO_WRITE_TRUE='#'
+  GL_COND_OBJ_STDIO_WRITE_FALSE=
+fi
+:
+    if test -z "${GL_COND_OBJ_STDIO_WRITE_TRUE}" && test -z "${GL_COND_OBJ_STDIO_WRITE_FALSE}"; then
+    GL_COND_OBJ_STDIO_WRITE_TRUE='#'
+    GL_COND_OBJ_STDIO_WRITE_FALSE='#'
+  fi
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_FSCANF=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_FSCANF 1" >>confdefs.h
+
+
+
+
+
+printf "%s\n" "#define GNULIB_FSCANF 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_SCANF=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_SCANF 1" >>confdefs.h
+
+
+
+
+
+printf "%s\n" "#define GNULIB_SCANF 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_FGETC=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_FGETC 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_GETC=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_GETC 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_GETCHAR=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_GETCHAR 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_FGETS=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_FGETS 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_FREAD=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_FREAD 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_FPRINTF=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_FPRINTF 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_PRINTF=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_PRINTF 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_VFPRINTF=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_VFPRINTF 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_VPRINTF=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_VPRINTF 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_FPUTC=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_FPUTC 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_PUTC=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_PUTC 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_PUTCHAR=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_PUTCHAR 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_FPUTS=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_FPUTS 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_PUTS=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_PUTS 1" >>confdefs.h
+
+
+
+
+
+
+
+
+
+
+
+
+          GL_GNULIB_FWRITE=1
+
+
+
+
+
+printf "%s\n" "#define GNULIB_TEST_FWRITE 1" >>confdefs.h
 
 
 

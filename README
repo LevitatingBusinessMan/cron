@@ -1,1 +1,6 @@
-A cron implementation
+This implementation of cron relies on the parse_datetime function found in gnulib.
+
+This allows it to parse dates the same as date(1) would.
+
+For instance, to execute logrotate every thursday on 07:45 you could use:
+thursday 08:00 15 minutes ago | logrorate

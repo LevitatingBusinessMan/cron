@@ -22,8 +22,13 @@
 #include <time.h>
 #include <unistd.h>
 #include "parse-datetime.h"
+#include "fprintftime.h"
 
+#define MAXJOBS 32
 #define CONFIGFILE "./cron.conf"
+
+struct timespec now;
+timezone_t tz;
 
 struct job {
     char* command;
@@ -31,18 +36,16 @@ struct job {
     struct timespec due;
 };
 
-struct timespec now;
-
 // Time to sleep until a job
 int job_sleep(struct job* job) {
     return job->due.tv_sec - now.tv_sec;
 }
 
 // The next job to be run
-struct job* next_job(struct job* jobs, size_t size) {
+struct job* next_job(struct job* jobs, size_t njobs) {
     int sleeptime = job_sleep(jobs);
     struct job* next = jobs;
-    for (int i=1; i < size; i++) {
+    for (int i=0; i < njobs; i++) {
         int nsleeptime = job_sleep(&jobs[i]);
         if (job_sleep(&jobs[i]) < sleeptime) {
             sleeptime = nsleeptime;
@@ -64,6 +67,14 @@ void job_execute(struct job* job) {
     if (system(job->command) < 0)
         perror("Failed to execute child");
     job_setdue(job);
+}
+
+// print the due date of this job
+void job_printtime(struct job* job) {
+    struct tm tm;
+    localtime_rz(tz, &job->due.tv_sec, &tm);
+    char* format = "%a %Y-%m-%d %H:%M:%S%:z";
+    fprintftime(stdout, format, &tm, tz, job->due.tv_nsec);
 }
 
 // Searches for the delimeter
@@ -110,20 +121,28 @@ int main (void) {
     size_t size = 0;
     ssize_t nread;
 
+    char const *tzstring = getenv("TZ");
+    tz = tzalloc(tzstring);
+
     clock_gettime(CLOCK_REALTIME, &now);
 
-    struct job* jobs = malloc(sizeof(struct job) * 32);
-    size_t i = 0;
+    struct job* jobs = malloc(sizeof(struct job) * MAXJOBS);
+    size_t njobs = 0;
 
     while ((nread = getline(&line, &size, fp)) != -1) {
-        parse_line(&jobs[i], line, nread);
-        printf("%s in %d seconds\n", jobs[i].command, job_sleep(&jobs[i]));
-        i++;
+        if (*line == '#' || *line == '\n') continue;
+        parse_line(&jobs[njobs], line, nread);
+        njobs++;
+    }
+    for (int i = 0; i < njobs; i++) {
+        printf("Scheduled '%s' for ", jobs[i].command);
+        job_printtime(&jobs[i]);
+        printf("\n");
     }
 
     while (1) {
         clock_gettime(CLOCK_REALTIME, &now);
-        struct job* next = next_job(jobs, i);
+        struct job* next = next_job(jobs, njobs);
         int sleeptime = job_sleep(next);
         printf("Sleeping for %d seconds to '%s'\n", sleeptime, next->command);
         sleep(sleeptime);
