@@ -25,7 +25,7 @@
 #include "fprintftime.h"
 
 #define MAXJOBS 32
-#define CONFIGFILE "./cron.conf"
+#define CONFIGFILE "/etc/cron.conf"
 
 struct timespec now;
 timezone_t tz;
@@ -114,10 +114,10 @@ void parse_line(struct job* job, char* line, size_t len) {
 
 int main (void) {
     puts(PACKAGE_STRING);
-    FILE* fp;
+    FILE* configfp;
 
-    fp = fopen(CONFIGFILE, "r");
-    if (fp == NULL) {
+    configfp = fopen(CONFIGFILE, "r");
+    if (configfp == NULL) {
         perror("Error opening config file");
         exit(errno);
     }
@@ -132,11 +132,12 @@ int main (void) {
     struct job* jobs = malloc(sizeof(struct job) * MAXJOBS);
     size_t njobs = 0;
 
-    while ((nread = getline(&line, &size, fp)) != -1) {
+    while ((nread = getline(&line, &size, configfp)) != -1) {
         if (*line == '#' || *line == '\n') continue;
         parse_line(&jobs[njobs], line, nread);
         njobs++;
     }
+
     for (int i = 0; i < njobs; i++) {
         printf("Scheduled '%s' for ", jobs[i].command);
         job_printtime(&jobs[i]);
@@ -154,9 +155,8 @@ int main (void) {
         job_execute(next);
     }
 
-    fclose(fp);
+    fclose(configfp);
     if (line) free(line);
 
     exit(EXIT_SUCCESS);
-    return 0;
 }
