@@ -37,8 +37,10 @@ struct job {
 };
 
 // Time to sleep until a job
-int job_sleep(struct job* job) {
-    return job->due.tv_sec - now.tv_sec;
+unsigned int job_sleep(struct job* job) {
+    int sleep = job->due.tv_sec - now.tv_sec;
+    if (sleep < 0) sleep = 0;
+    return sleep;
 }
 
 // The next job to be run
@@ -56,7 +58,9 @@ struct job* next_job(struct job* jobs, size_t njobs) {
 }
 
 // parses the timestring to get a due time
+// this will also update the clock
 struct timespec* job_setdue(struct job* job) {
+    clock_gettime(CLOCK_REALTIME_ALARM, &now);
     parse_datetime(&job->due, job->timestring, &now);
     return &job->due;
 }
@@ -125,8 +129,6 @@ int main (void) {
     char const *tzstring = getenv("TZ");
     tz = tzalloc(tzstring);
 
-    clock_gettime(CLOCK_REALTIME, &now);
-
     struct job* jobs = malloc(sizeof(struct job) * MAXJOBS);
     size_t njobs = 0;
 
@@ -141,8 +143,9 @@ int main (void) {
         printf("\n");
     }
 
+    clock_gettime(CLOCK_REALTIME_ALARM, &now);
+
     while (1) {
-        clock_gettime(CLOCK_REALTIME, &now);
         struct job* next = next_job(jobs, njobs);
         int sleeptime = job_sleep(next);
         printf("Sleeping for %d seconds to '%s'\n", sleeptime, next->command);
