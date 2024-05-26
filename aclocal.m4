@@ -108,6 +108,43 @@ AC_DEFUN([AM_AUX_DIR_EXPAND],
 am_aux_dir=`cd "$ac_aux_dir" && pwd`
 ])
 
+# AM_COND_IF                                            -*- Autoconf -*-
+
+# Copyright (C) 2008-2021 Free Software Foundation, Inc.
+#
+# This file is free software; the Free Software Foundation
+# gives unlimited permission to copy and/or distribute it,
+# with or without modifications, as long as this notice is preserved.
+
+# _AM_COND_IF
+# _AM_COND_ELSE
+# _AM_COND_ENDIF
+# --------------
+# These macros are only used for tracing.
+m4_define([_AM_COND_IF])
+m4_define([_AM_COND_ELSE])
+m4_define([_AM_COND_ENDIF])
+
+# AM_COND_IF(COND, [IF-TRUE], [IF-FALSE])
+# ---------------------------------------
+# If the shell condition COND is true, execute IF-TRUE, otherwise execute
+# IF-FALSE.  Allow automake to learn about conditional instantiating macros
+# (the AC_CONFIG_FOOS).
+AC_DEFUN([AM_COND_IF],
+[m4_ifndef([_AM_COND_VALUE_$1],
+	   [m4_fatal([$0: no such condition "$1"])])dnl
+_AM_COND_IF([$1])dnl
+if test -z "$$1_TRUE"; then :
+  m4_n([$2])[]dnl
+m4_ifval([$3],
+[_AM_COND_ELSE([$1])dnl
+else
+  $3
+])dnl
+_AM_COND_ENDIF([$1])dnl
+fi[]dnl
+])
+
 # AM_CONDITIONAL                                            -*- Autoconf -*-
 
 # Copyright (C) 1997-2021 Free Software Foundation, Inc.
@@ -1148,3 +1185,57 @@ AC_SUBST([am__tar])
 AC_SUBST([am__untar])
 ]) # _AM_PROG_TAR
 
+m4_include([m4/00gnulib.m4])
+m4_include([m4/__inline.m4])
+m4_include([m4/absolute-header.m4])
+m4_include([m4/alloca.m4])
+m4_include([m4/assert_h.m4])
+m4_include([m4/bison.m4])
+m4_include([m4/c-bool.m4])
+m4_include([m4/clock_time.m4])
+m4_include([m4/codeset.m4])
+m4_include([m4/eealloc.m4])
+m4_include([m4/environ.m4])
+m4_include([m4/errno_h.m4])
+m4_include([m4/extensions.m4])
+m4_include([m4/extern-inline.m4])
+m4_include([m4/flexmember.m4])
+m4_include([m4/gettime.m4])
+m4_include([m4/gettimeofday.m4])
+m4_include([m4/gnulib-common.m4])
+m4_include([m4/gnulib-comp.m4])
+m4_include([m4/include_next.m4])
+m4_include([m4/intl-thread-locale.m4])
+m4_include([m4/inttypes.m4])
+m4_include([m4/lcmessage.m4])
+m4_include([m4/limits-h.m4])
+m4_include([m4/locale-fr.m4])
+m4_include([m4/locale_h.m4])
+m4_include([m4/localename.m4])
+m4_include([m4/malloca.m4])
+m4_include([m4/mktime.m4])
+m4_include([m4/multiarch.m4])
+m4_include([m4/nstrftime.m4])
+m4_include([m4/off64_t.m4])
+m4_include([m4/off_t.m4])
+m4_include([m4/parse-datetime.m4])
+m4_include([m4/setenv.m4])
+m4_include([m4/ssize_t.m4])
+m4_include([m4/stddef_h.m4])
+m4_include([m4/stdint.m4])
+m4_include([m4/stdlib_h.m4])
+m4_include([m4/sys_socket_h.m4])
+m4_include([m4/sys_time_h.m4])
+m4_include([m4/sys_types_h.m4])
+m4_include([m4/time_h.m4])
+m4_include([m4/time_r.m4])
+m4_include([m4/time_rz.m4])
+m4_include([m4/timegm.m4])
+m4_include([m4/timespec.m4])
+m4_include([m4/tm_gmtoff.m4])
+m4_include([m4/tzset.m4])
+m4_include([m4/unistd_h.m4])
+m4_include([m4/warn-on-use.m4])
+m4_include([m4/wchar_t.m4])
+m4_include([m4/wint_t.m4])
+m4_include([m4/zzgnulib.m4])
