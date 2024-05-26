@@ -1,4 +1,4 @@
-AC_INIT([cron], [1.0], [me@levitati.ng])
+AC_INIT([cron], [1.1], [me@levitati.ng])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_PROG_CC
 gl_EARLY
