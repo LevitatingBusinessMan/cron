@@ -109,6 +109,7 @@ void parse_line(struct job* job, char* line, size_t len) {
 }
 
 int main (void) {
+    puts(PACKAGE_STRING);
     FILE* fp;
 
     fp = fopen(CONFIGFILE, "r");
